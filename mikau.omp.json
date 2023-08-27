@@ -1,0 +1,145 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "type": "os",
+          "style": "diamond",
+          "foreground": "#00ff11",
+          "background": "#4d00b1",
+          "template": " {{.Icon}} ",
+          "trailing_diamond": "\u23AC",
+          "leading_diamond": "\u2591"
+        },
+        {
+          "style": "diamond",
+          "type": "text", 
+          "foreground": "#ff00d9",
+          "background": "#4d00b1",
+          "template": " {{ .UserName }}👽@{{ .HostName }}🔊 \u266C\u2669\u266B\u266A\u266C\u2669 ",
+          "leading_diamond": "\u25D6",
+          "trailing_diamond": "\u25D7"
+        },
+        {
+          "type": "shell",
+          "style": "diamond",
+          "foreground": "#00f2ff",
+          "background": "#4d00b1",
+          "template": " # = {{ .Shell }} ",
+          "trailing_diamond": "\u25D7",
+          "leading_diamond": "\u25D6"
+        },
+        {
+          "foreground": "#3d9bff",
+          "background": "#4d00b1",
+          "properties": {
+            "style": "mixed"
+          },
+          "style": "diamond",
+          "template": " \ue5ff = {{ .Path }} ",
+          "leading_diamond": "\u25D6",
+          "trailing_diamond": "\u25D7",
+          "type": "path"
+        },
+        {
+          "background": "#2b0273",
+          "foreground": "#43CCEA",
+          "foreground_templates": [
+            "{{ if or (.Working.Changed) (.Staging.Changed) }}#FF9248{{ end }}",
+            "{{ if and (gt .Ahead 0) (gt .Behind 0) }}#ff4500{{ end }}",
+            "{{ if gt .Ahead 0 }}#B388FF{{ end }}",
+            "{{ if gt .Behind 0 }}#B388FF{{ end }}"
+          ],
+          "leading_diamond": " \ue0b6",
+          "properties": {
+            "branch_max_length": 25,
+            "fetch_stash_count": true,
+            "fetch_status": true,
+            "fetch_upstream_icon": true
+          },
+          "style": "diamond",
+          "template": " {{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
+          "trailing_diamond": "\ue0b4",
+          "type": "git"
+        },
+
+        {
+          "foreground": "#ff4800",
+          "style": "plain",
+          "template": " ❌ ",
+          "type": "exit"
+        }
+      ],
+      "type": "prompt"
+    },
+     {
+      "alignment": "right",
+      "segments": [
+
+        {
+          "foreground": "#53f345",
+          "properties": {
+            "display_mode": "files",
+            "fetch_package_manager": true,
+            "fetch_version": true,
+            "npm_icon": "<#FE4A49>\ue71e npm</> ",
+            "yarn_icon":"<#44FFD2>\uf487 yarn</> "
+          },
+          "style": "plain",
+          "template": "{{ if .PackageManagerIcon }}{{ .PackageManagerIcon }} {{ end }}\ue718 {{ .Full }}",
+          "type": "node"
+        },
+        {
+          "foreground": "#147ee0",
+          "properties": {
+            "display_mode": "files",
+            "fetch_version": true
+          },
+          "style": "plain",
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "type": "crystal"
+        },
+        {
+          "foreground": "#ff2600",
+          "properties": {
+            "display_mode": "files",
+            "fetch_version": true
+          },
+          "style": "plain",
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "type": "ruby"
+        },
+        {
+          "foreground": "#f2ef15",
+          "properties": {
+            "display_mode": "context",
+            "fetch_virtual_env": true
+          },
+          "style": "plain",
+          "template": " {{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}",
+          "type": "python"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "leading_diamond": "\u2591",
+          "trailing_diamond": "\u23AC",
+          "foreground": "#00ff11",
+          "background": "#4d00b1",
+          "style": "diamond",
+          "template": " \u26A1",
+          "type": "text"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "version": 2
+}
